@@ -9,6 +9,7 @@ import { Observable, share } from 'rxjs';
 import { ICarta } from '@nx-monorepo/comum';
 
 import { API_BASE } from '@nx-monorepo/auth';
+import { Console } from 'console';
 
 @Injectable({
   providedIn: 'root',
@@ -46,6 +47,15 @@ export class CartaEdicaoService {
 
     req$.subscribe();
 
+    return req$;
+  }
+  public delete(carta: ICarta): Observable<ICarta> {
+    const req$ = this.httpClient.delete<ICarta>(
+      `${this.apiBase}/carta/${carta._id}`
+    ).pipe(
+      share(),
+    );
+    req$.subscribe();
     return req$;
   }
 

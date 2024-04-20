@@ -76,3 +76,28 @@ cartaRouter.post('/', async (req: AuthorizedRequest, res: Response, next: NextFu
   }
 
 });
+
+cartaRouter.delete('/:_id', async (req: AuthorizedRequest, res: Response, next: NextFunction) => {
+  const _id: number = +req.params._id;
+
+  try {
+    // Verificar se a carta existe antes de excluir
+    const carta: ICarta = await getCollection<ICarta>(req.app, 'cartas').findOne({ _id: _id });
+    if (!carta) {
+      return res.status(404).json({ message: `Carta com ID ${_id} não encontrada.` });
+    }
+
+    // Excluir a carta
+    const resultado = await getCollection<ICarta>(req.app, 'cartas').deleteOne({ _id: _id });
+    if (resultado.deletedCount === 1) {
+      // Carta excluída com sucesso
+      res.status(200).json({ message: `Carta com ID ${_id} excluída com sucesso.` });
+    } else {
+      // A exclusão falhou por algum motivo desconhecido
+      return res.status(500).json({ message: `Falha ao excluir carta com ID ${_id}.` });
+    }
+  } catch (error) {
+    // Lidar com erros
+    next(error);
+  }
+});

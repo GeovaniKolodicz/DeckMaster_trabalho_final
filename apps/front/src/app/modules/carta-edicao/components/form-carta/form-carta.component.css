@@ -1,8 +1,11 @@
-.form{
+.container{
   margin: 1rem;
+}
+.form{
   gap: 1rem;
   display: flex;
   flex-direction: column;
+  margin: 1rem 0;
 }
 .div-selects{
   gap: 1rem;

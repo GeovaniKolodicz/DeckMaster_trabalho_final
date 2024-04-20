@@ -80,6 +80,14 @@ export class FormCartaComponent implements OnInit {
       )
     }
   }
+  public excluir(): void {
+    const carta = this.formGroup.value as ICarta;
+      this.cartaEdicaoService.delete(carta).subscribe(
+        cartaGravado => {
+          this.router.navigate(['/']);
+        },
+      );
+  }
 
   public ngOnInit(): void {
     // Se estiver editando um registro:

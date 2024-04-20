@@ -1,4 +1,4 @@
-<div class="example-container">
+<div class="container">
   <form [formGroup]="formGroup" novalidate (ngSubmit)="enviar()">
     @if (!formGroup.invalid || id == '' ) {
       <div class="form">
@@ -58,4 +58,13 @@
       </button>
     }
   </form>
+  @if(id){
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="excluir()"
+    >
+      Remover Carta
+    </button>
+  }
 </div>
