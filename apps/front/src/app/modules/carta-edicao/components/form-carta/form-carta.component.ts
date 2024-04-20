@@ -7,9 +7,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { AsyncPipe } from '@angular/common';
 
 import { CartaEdicaoService } from '../../services/carta-edicao.service';
 import { ICarta } from '@nx-monorepo/comum';
+import { AuthService } from '@nx-monorepo/auth';
 
 @Component({
   selector: 'app-form-carta',
@@ -20,12 +23,17 @@ import { ICarta } from '@nx-monorepo/comum';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
+    AsyncPipe,
   ],
 })
 export class FormCartaComponent implements OnInit {
+
+
+  public authService = inject(AuthService);
 
   @Input({
     required: true,
@@ -83,6 +91,11 @@ export class FormCartaComponent implements OnInit {
         },
       );
     }
+  }
+
+  public logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/auth']);
   }
 
 }

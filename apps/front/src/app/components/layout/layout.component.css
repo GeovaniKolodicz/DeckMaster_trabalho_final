@@ -32,6 +32,8 @@ mat-toolbar.mat-toolbar.mat-primary {
 .oculto {
   display: none;
 }
-:root {
-  --primary: #1976d2; /* Azul padrão do Material Design */
+.div-buttons{
+ display: flex;
+ gap: 1.5rem;
+ align-items: center;
 }

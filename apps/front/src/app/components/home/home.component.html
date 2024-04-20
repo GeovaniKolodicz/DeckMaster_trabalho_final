@@ -1,7 +1,7 @@
 
 <div class="container">
   @for (carta of cartas$ | async; track carta) {
-    <div class="card">
+    <div class="card" routerLink="/carta-edicao/{{ carta._id }}">
       <div class="caracter">{{carta.caracter}}</div>
       <div class="naipe">{{carta.naipe}}</div>
     </div>

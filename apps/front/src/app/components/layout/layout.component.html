@@ -22,50 +22,52 @@
       }
       <span>DeckMaster - Gerenciador de Cartas de Baralho</span>
       <span class="spacer"></span>
-      @if (authService.logado$ | async) {
-        <button
+      <div class="div-buttons">
+        @if (authService.logado$ | async) {
+          <button
+            mat-fab
+            extended
+            class="example-icon favorite-icon"
+            aria-label="Nova Carta"
+            routerLink="/carta-edicao"
+            routerLinkActive="oculto"
+          >
+          <mat-icon>bookmark_add</mat-icon>
+            Novo
+          </button>
+          <button
+            mat-flat-button
+            color="warn"
+            aria-label="Botão de fazer logout da aplicação"
+            (click)="logout()"
+          >
+            <mat-icon>logout</mat-icon>
+            Fazer logout
+          </button>
+        } @else {
+
+          <button
           mat-fab
           extended
           class="example-icon favorite-icon"
           aria-label="Nova Carta"
-          routerLink="/carta-edicao"
+          (click)="semAcesso()"
           routerLinkActive="oculto"
-        >
-        <mat-icon>bookmark_add</mat-icon>
-          Novo
-        </button>
-        <button
-          mat-flat-button
-          color="warn"
-          aria-label="Botão de fazer logout da aplicação"
-          (click)="logout()"
-        >
-          <mat-icon>logout</mat-icon>
-          Fazer logout
-        </button>
-      } @else {
-
-        <button
-        mat-fab
-        extended
-        class="example-icon favorite-icon"
-        aria-label="Nova Carta"
-        (click)="semAcesso()"
-        routerLinkActive="oculto"
-        >
-        <mat-icon>bookmark_add</mat-icon>
-          Novo
-        </button>
-        <button
-          mat-button
-          aria-label="Botão de fazer login na aplicação"
-          routerLink="/auth"
-          routerLinkActive="oculto"
-        >
-          <mat-icon>login</mat-icon>
-          Fazer login
-        </button>
-      }
+          >
+          <mat-icon>bookmark_add</mat-icon>
+            Novo
+          </button>
+          <button
+            mat-button
+            aria-label="Botão de fazer login na aplicação"
+            routerLink="/auth"
+            routerLinkActive="oculto"
+          >
+            <mat-icon>login</mat-icon>
+            Fazer login
+          </button>
+        }
+      </div>
     </mat-toolbar>
     <div style="padding: 1em;">
       <router-outlet></router-outlet>

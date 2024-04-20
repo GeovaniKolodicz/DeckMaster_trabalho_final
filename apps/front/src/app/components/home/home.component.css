@@ -10,8 +10,21 @@
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
-:host{
+.card:hover {
+  opacity: 0.8; /* Reduz a opacidade do card ao passar o mouse sobre ele */
+}
+
+.card:hover::after {
+  content: "Editar"; /* Adiciona o texto "Editar" */
+  background-color: rgba(0, 0, 0, 0.5); /* Adiciona um fundo semi-transparente */
+  color: white; /* Cor do texto */
+  padding: 3px 6px; /* Espaçamento interno */
+  border-radius: 3px; /* Borda arredondada */
+  font-size: 0.8em; /* Tamanho da fonte */
+}
+.container{
   display: flex;
   gap: 1em;
   flex-wrap: nowrap;
