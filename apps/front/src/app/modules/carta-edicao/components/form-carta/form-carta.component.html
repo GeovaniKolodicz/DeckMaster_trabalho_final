@@ -1,0 +1,37 @@
+<div class="example-container">
+  <form [formGroup]="formGroup" novalidate (ngSubmit)="enviar()">
+    <div class="form">
+      <mat-form-field>
+        <mat-select formControlName="caracter">
+          @for (caracter of Caracter; track $index) {
+            <mat-option [value]="caracter">{{ caracter}}</mat-option>
+          }
+        </mat-select>
+        @if (formGroup.controls['naipe'].hasError('required')) {
+          <mat-error>Campo <strong>obrigatório</strong></mat-error>
+        }
+        <mat-label><strong> Caracter </strong> <em></em></mat-label>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select formControlName="naipe">
+          @for (naipe of Naipes; track $index) {
+            <mat-option [value]="naipe">{{ naipe}}</mat-option>
+          }
+        </mat-select>
+        @if (formGroup.controls['naipe'].hasError('required')) {
+          <mat-error>Campo <strong>obrigatório</strong></mat-error>
+        }
+        <mat-label><strong> Naipe </strong> <em></em></mat-label>
+      </mat-form-field>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+        >
+          {{ id ? 'Salvar alterações' : 'Incluir' }}
+        </button>
+      </mat-card-actions>
+    </div>
+  </form>
+</div>

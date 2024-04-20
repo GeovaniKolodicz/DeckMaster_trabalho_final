@@ -44,6 +44,13 @@ export class FormCartaComponent implements OnInit {
     caracter: ['', Validators.required],
   });
 
+  public Caracter: String[] = [
+    'Q', 'J', 'K','A', '2', '3','4', '5', '6', '7', '8', '9','10'
+  ]
+  public Naipes: String [] =[
+    '♠️', '♥️', '♣️','♦️'
+  ];
+
   public cartaEdicaoService = inject(CartaEdicaoService);
   private router = inject(Router);
 

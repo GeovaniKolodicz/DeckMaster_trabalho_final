@@ -24,6 +24,17 @@
       <span class="spacer"></span>
       @if (authService.logado$ | async) {
         <button
+          mat-fab
+          extended
+          class="example-icon favorite-icon"
+          aria-label="Nova Carta"
+          routerLink="/carta-edicao"
+          routerLinkActive="oculto"
+        >
+        <mat-icon>bookmark_add</mat-icon>
+          Novo
+        </button>
+        <button
           mat-flat-button
           color="warn"
           aria-label="Botão de fazer logout da aplicação"
@@ -33,6 +44,18 @@
           Fazer logout
         </button>
       } @else {
+
+        <button
+        mat-fab
+        extended
+        class="example-icon favorite-icon"
+        aria-label="Nova Carta"
+        (click)="semAcesso()"
+        routerLinkActive="oculto"
+        >
+        <mat-icon>bookmark_add</mat-icon>
+          Novo
+        </button>
         <button
           mat-button
           aria-label="Botão de fazer login na aplicação"

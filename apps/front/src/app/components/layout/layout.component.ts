@@ -43,4 +43,7 @@ export class LayoutComponent {
     this.authService.logout();
     this.router.navigate(['/auth']);
   }
+  public semAcesso(): void{
+    alert('Você precisa estar logado para efetuar o cadastro!')
+  }
 }
