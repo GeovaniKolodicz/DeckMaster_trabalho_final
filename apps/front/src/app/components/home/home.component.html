@@ -1,1 +1,9 @@
 
+<div class="container">
+  @for (carta of cartas$ | async; track carta) {
+    <div class="card">
+      <div class="caracter">{{carta.caracter}}</div>
+      <div class="naipe">{{carta.naipe}}</div>
+    </div>
+   }
+</div>

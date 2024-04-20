@@ -1,8 +1,8 @@
 use('app-deckmaster');
 
-db.deckmaster.drop();
+db.cartas.drop();
 
-db.deckmaster.insertMany([
+db.cartas.insertMany([
   {
     '_id': 1,
     'naipe': '♥️',

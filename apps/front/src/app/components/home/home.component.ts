@@ -9,6 +9,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+import { CartaService } from '../../services/carta.service';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -23,5 +25,6 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-
+  private  cartaService = inject(CartaService);
+  public cartas$ = this.cartaService.getAll();
 }

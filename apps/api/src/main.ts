@@ -14,7 +14,7 @@ app.use(json());
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // Conectar ao MongoDB
-MongoClient.connect('mongodb://127.0.0.1:2001/app-deckmaster')
+MongoClient.connect('mongodb://127.0.0.1:2001/')
   .then(client => {
     console.log('Conectado ao MongoDB.');
     app.locals.db = client.db('app-deckmaster');
