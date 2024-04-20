@@ -1,0 +1,26 @@
+{
+  "name": "comum",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/comum/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/comum",
+        "main": "libs/comum/src/index.ts",
+        "tsConfig": "libs/comum/tsconfig.lib.json",
+        "assets": ["libs/comum/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/comum/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,51 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isXSmall$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isXSmall$ | async) ? 'push' : 'side'"
+      [opened]="(isXSmall$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home" routerLinkActive="ativo">Home</a>
+      <a mat-list-item routerLink="/sobre" routerLinkActive="ativo">Sobre</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="background">
+      @if (isXSmall$ | async) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
+      <span>DeckMaster - Gerenciador de Cartas de Baralho</span>
+      <span class="spacer"></span>
+      @if (authService.logado$ | async) {
+        <button
+          mat-flat-button
+          color="warn"
+          aria-label="Botão de fazer logout da aplicação"
+          (click)="logout()"
+        >
+          <mat-icon>logout</mat-icon>
+          Fazer logout
+        </button>
+      } @else {
+        <button
+          mat-button
+          aria-label="Botão de fazer login na aplicação"
+          routerLink="/auth"
+          routerLinkActive="oculto"
+        >
+          <mat-icon>login</mat-icon>
+          Fazer login
+        </button>
+      }
+    </mat-toolbar>
+    <div style="padding: 1em;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

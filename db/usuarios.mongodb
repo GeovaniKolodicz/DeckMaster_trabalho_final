@@ -1,0 +1,13 @@
+use('app-deckmaster');
+
+db.usuarios.drop();
+
+db.usuarios.insertMany([
+  {
+    '_id': 1,
+    'login': 'admin',
+    'senha': 'admin',
+    'nome': 'Admin',
+    'administrador': true,
+  },
+]);

@@ -1,0 +1,11 @@
+use('app-deckmaster');
+
+db.deckmaster.drop();
+
+db.deckmaster.insertMany([
+  {
+    '_id': 1,
+    'naipe': '♥️',
+    'caracter': 'A'
+  },
+]);
